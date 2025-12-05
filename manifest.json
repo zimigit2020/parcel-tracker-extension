@@ -1,0 +1,66 @@
+{
+  "manifest_version": 3,
+  "name": "Parcel Tracker",
+  "version": "1.0",
+  "description": "Track Amazon and eBay orders and link them to tracking numbers for Planet Express declarations",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "*://*.amazon.com/*",
+    "*://*.ebay.com/*",
+    "*://*.planetexpress.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.amazon.com/your-orders/*", "*://*.amazon.com/gp/your-account/order-history*"],
+      "js": ["content-orders.js"]
+    },
+    {
+      "matches": ["*://*.amazon.com/gp/your-account/ship-track*", "*://*.amazon.com/progress-tracker/*"],
+      "js": ["content-tracking.js"]
+    },
+    {
+      "matches": ["*://*.planetexpress.com/client/*"],
+      "js": ["content-planetexpress.js"]
+    },
+    {
+      "matches": [
+        "*://*.ebay.com/mye/*",
+        "*://*.ebay.com/myb/*",
+        "*://*.ebay.com/sh/ord/*",
+        "*://*.ebay.com/mesh/ord/*",
+        "*://*.ebay.com/vod/*",
+        "*://*.ebay.com/orddet/*",
+        "*://*.ebay.com/sns/*",
+        "*://*.ebay.com/itm/*",
+        "*://*.ebay.com/ship/trk/*",
+        "*://order.ebay.com/*"
+      ],
+      "js": ["content-ebay.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "browser_specific_settings": {
+    "safari": {
+      "strict_min_version": "15.4"
+    }
+  }
+}

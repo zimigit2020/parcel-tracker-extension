@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Xcode build output
+build/
+DerivedData/
+
+# Safari extension converted project (regenerated)
+*.xcodeproj
+*.app
