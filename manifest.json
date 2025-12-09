@@ -22,7 +22,7 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://*.amazon.com/your-orders/*", "*://*.amazon.com/gp/your-account/order-history*"],
+      "matches": ["*://*.amazon.com/your-orders/*", "*://*.amazon.com/gp/your-account/order-history*", "*://*.amazon.com/gp/css/order-history*"],
       "js": ["content-orders.js"]
     },
     {

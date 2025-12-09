@@ -180,6 +180,7 @@
             ...existingOrders[order.orderId],
             ...order,
             items: order.items.length > 0 ? order.items : (existingOrders[order.orderId]?.items || []),
+            source: 'amazon',
             lastUpdated: new Date().toISOString()
           };
         }
